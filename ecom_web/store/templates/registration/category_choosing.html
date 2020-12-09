@@ -1,0 +1,13 @@
+{% extends 'store/base.html' %}
+{% load static %}
+{% block content %}
+{% if user.is_authenticated %}
+    {% if user.is_merchant %}
+        <h4>Is Merchant</h4>
+    {% else %}
+        <h4>Not Merchant</h4>
+    {% endif %}
+{% else %}
+    <h4>You Need To Login</h4>
+{% endif %}
+{% endblock %}

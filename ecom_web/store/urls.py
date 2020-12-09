@@ -8,6 +8,7 @@ urlpatterns = [
     path('checkout/', views.checkout, name='checkout'),
     path('hello/', views.HelloView.as_view(), name='hello'),
     path('signup/', views.SignUpView.as_view(), name='signup'),
+    path('category_choosing/', views.category_choosing, name='category_choosing'),
     path('api/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
 ]

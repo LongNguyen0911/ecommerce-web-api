@@ -17,6 +17,10 @@ def cart(request):
 def checkout(request):
     return render(request, 'store/checkout.html')
 
+def category_choosing(request):
+    return render(request, 'registration/category_choosing.html')
+
+
 class HelloView(APIView):
     permission_classes = (IsAuthenticated,)
 

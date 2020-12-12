@@ -1,6 +1,8 @@
 from django.urls import path, include
 from . import views
 from rest_framework_simplejwt import views as jwt_views
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('', views.dashboard, name='dashboard'),
@@ -11,4 +13,7 @@ urlpatterns = [
     path('category_choosing/', views.category_choosing, name='category_choosing'),
     path('api/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
+    path('update_item/', views.updateItem, name='update_item'),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

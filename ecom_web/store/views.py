@@ -14,6 +14,9 @@ from .models import *
 # Create your views here.
 def dashboard(request):
     flag = True
+    items = []
+    order = {'get_cart_total':0, 'get_cart_items':0, 'shipping':True}
+    cartItems = order['get_cart_items']
     if request.user.is_authenticated:
         if not request.user.is_merchant and not request.user.is_superuser:
             customer = request.user
@@ -22,15 +25,15 @@ def dashboard(request):
             cartItems = order.get_cart_item
         else:
             flag = False
-            items = []
-            order = {'get_cart_total':0, 'get_cart_items':0, 'shipping':True}
-            cartItems = order['get_cart_items']
     #categories = Categorie.objects.all()
     products = Product.objects.filter(approval=True)   
     return render(request, 'store/store.html', {'products': products, 'cartItems': cartItems, 'flag': flag})
 
 def cart(request):
     flag = True
+    items = []
+    order = {'get_cart_total':0, 'get_cart_items':0, 'shipping':True}
+    cartItems = order['get_cart_items']
     if request.user.is_authenticated:
         if not request.user.is_merchant and not request.user.is_superuser:
             customer = request.user
@@ -39,14 +42,14 @@ def cart(request):
             cartItems = order.get_cart_item
         else:
             flag = False
-            items = []
-            order = {'get_cart_total':0, 'get_cart_items':0, 'shipping':True}
-            cartItems = order['get_cart_items']
         #return 'store/login.html'
     return render(request, 'store/cart.html', {'items': items, 'order': order, 'cartItems': cartItems, 'flag': flag})
 
 def checkout(request):
     flag = True
+    items = []
+    order = {'get_cart_total':0, 'get_cart_items':0, 'shipping':True}
+    cartItems = order['get_cart_items']
     if request.user.is_authenticated:
         if not request.user.is_merchant and not request.user.is_superuser:
             customer = request.user
@@ -55,9 +58,6 @@ def checkout(request):
             cartItems = order.get_cart_item
         else:
             flag = False
-            items = []
-            order = {'get_cart_total':0, 'get_cart_items':0, 'shipping':True}
-            cartItems = order['get_cart_items']
     return render(request, 'store/checkout.html', {'items': items, 'order': order, 'cartItems': cartItems, 'flag': flag})
 
 def category_choosing(request):

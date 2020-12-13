@@ -1,10 +1,17 @@
 {% extends 'store/base.html' %}
 {% load static %}
 {% block content %}
-{% if flag is False %}
+{% if user.is_authenticated %}
+	{% if flag is False %}
+		<script>
+			alert("Sorry, only Customers are Allowed");
+			window.location.replace("/");
+		</script>
+	{% endif %}
+{% else %}
 	<script>
-		alert("Sorry, only Customers are Allowed");
-		window.location.replace("/");
+		alert("You Need To Login First");
+		window.location.replace("{% url 'login' %}");
 	</script>
 {% endif %}
 <div class="row">

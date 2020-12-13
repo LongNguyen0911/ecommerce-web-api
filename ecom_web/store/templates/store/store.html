@@ -8,10 +8,14 @@
         <div class="box-element product">
             <h6><strong>{{ product.product_name }}</strong></h6>
             <hr>
-            {% if flag is False %}
-                <button class="btn btn-outline-secondary add-btn" onclick="check_flag()">Add to Cart</button>
+            {% if user.is_authenticated %}
+                {% if flag is False %}
+                    <button class="btn btn-outline-secondary add-btn" onclick="check_flag()">Add to Cart</button>
+                {% else %}
+                    <button data-product={{product.id}} data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+                {% endif %}
             {% else %}
-                <button data-product={{product.id}} data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+                <button class="btn btn-outline-secondary add-btn" onclick="check_auth()">Add to Cart</button>
             {% endif %}
             <a class="btn btn-outline-success" href="#">View</a>
             <h4 style="display: inline-block; float: right"><strong>${{ product.price|floatformat:2 }}</strong></h4>
@@ -22,8 +26,12 @@
 </div>
 <script type="text/javascript">
     function check_flag(){
-        alert("Sorry, only Customers are Allowed");
+        alert("Sorry, Only Customers Are Allowed");
 		window.location.replace("/");
+    }
+    function check_auth(){
+        alert("You Need To Login First!");
+		window.location.replace("{% url 'login' %}");
     }
 </script>
 {% endblock %}

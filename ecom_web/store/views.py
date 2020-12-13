@@ -61,7 +61,8 @@ def checkout(request):
     return render(request, 'store/checkout.html', {'items': items, 'order': order, 'cartItems': cartItems, 'flag': flag})
 
 def category_choosing(request):
-    return render(request, 'registration/category_choosing.html')
+    category_list = Categorie.objects.all()
+    return render(request, 'registration/category_choosing.html', {'category_list': category_list})
 
 
 class HelloView(APIView):

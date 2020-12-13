@@ -4,6 +4,9 @@
 {% if user.is_authenticated %}
     {% if user.is_merchant %}
         <h4>Is Merchant</h4>
+        {% for category in category_list %}
+            <button class="btn badge btn-primary">{{ category }}</button>
+        {% endfor %}
     {% else %}
         <h4>Not Merchant</h4>
     {% endif %}

@@ -1,6 +1,12 @@
 {% extends 'store/base.html' %}
 {% load static %}
 {% block content %}
+{% if flag is False %}
+	<script>
+		alert("Sorry, only Customers are Allowed");
+		window.location.replace("/");
+	</script>
+{% endif %}
 <div class="row">
 	<div class="col-lg-12">
 		<div class="box-element">
@@ -34,9 +40,9 @@
 		<div style="flex:1">
 			<p class="quantity">{{ item.quantity }}</p>
 			<div class="quantity">
-				<img data-product={{product.id}} data-action="add" class="chg-quantity update-cart" src="{% static  'images/arrow-up.png' %}">
+				<img data-product={{item.product.id}} data-action="add" class="chg-quantity update-cart" src="{% static  'images/arrow-up.png' %}">
 		
-				<img class="chg-quantity" src="{% static  'images/arrow-down.png' %}">
+				<img data-product={{item.product.id}} data-action="remove" class="chg-quantity update-cart" src="{% static  'images/arrow-down.png' %}">
 			</div>
 		</div>
 		<div style="flex:1"><p>${{ item.get_total|floatformat:2 }}</p></div>

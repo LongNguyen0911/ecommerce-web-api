@@ -7,11 +7,14 @@
 - Checkout
 # Users Role:
 - Super User:
-Username: admin
-Password: admin
+  + Username: admin
+  + Password: admin
 - Merchant/Business:
-Username: merchant1
-Password: 11mer1111
+  + Username: merchant1
+  + Password: 11mer1111
 - Customer:
-Username: user
-Password: 11us1111
+  + Username: user
+  + Password: 11us1111
+#Requirements:
+- Python 3.6.12
+- Packages in requirements.txt

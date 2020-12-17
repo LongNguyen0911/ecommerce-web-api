@@ -4,7 +4,7 @@ from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
 from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
-#from product.models import Categorie
+from category.models import Categorie
 
 # Create your models here.
 class CustomUser(AbstractBaseUser, PermissionsMixin):
@@ -30,7 +30,7 @@ class Business(models.Model):
     business_name = models.CharField(max_length=200, blank=True)
     business_address = models.CharField(max_length=200, blank=True)
     zipcode = models.CharField(max_length=200, blank=True)
-    #categories_list = models.Foreignkey()
+    category = models.OneToOneField(Categorie, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.name
+        return self.business_name

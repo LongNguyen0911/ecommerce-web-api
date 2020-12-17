@@ -4,6 +4,7 @@ from django.http import JsonResponse
 from .models import *
 from rest_framework import viewsets
 from .serializers import ProductSerializer
+from django_filters.rest_framework import DjangoFilterBackend
 
 # Create your views here.
 def updateItem(request):
@@ -32,16 +33,11 @@ def updateItem(request):
 
     return JsonResponse('Item was added', safe=False)
 
-class ProductViewSet(viewsets.ReadOnlyModelViewSet):
+class ProductViewSet(viewsets.ModelViewSet):
     """
     This viewset automatically provides `list` and `retrieve` actions.
     """
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
-
-#class CategoryViewSet(viewsets.ReadOnlyModelViewSet):
-#    """
-#    This viewset automatically provides `list` and `retrieve` actions.
-#    """
-#    queryset = Categorie.objects.all()
-#    serializer_class = UserSerializer
+    filter_backends = (DjangoFilterBackend,)
+    filter_fields = ('approval')

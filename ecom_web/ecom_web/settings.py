@@ -34,6 +34,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'store.apps.StoreConfig',
     'product.apps.ProductConfig',
+    'category.apps.CategoryConfig',
     'user.apps.UserConfig',
     'order.apps.OrderConfig',
     'rest_framework',

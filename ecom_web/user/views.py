@@ -14,10 +14,6 @@ class SignUpView(CreateView):
     success_url = reverse_lazy('login')
     template_name = 'registration/signup.html'
 
-def category_choosing(request):
-    category_list = Categorie.objects.all()
-    return render(request, 'registration/category_choosing.html', {'category_list': category_list})
-
 class UserViewSet(viewsets.ModelViewSet):
     """
     This viewset automatically provides `list` and `retrieve` actions.

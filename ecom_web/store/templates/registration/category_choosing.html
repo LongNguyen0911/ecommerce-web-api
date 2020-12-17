@@ -3,14 +3,23 @@
 {% block content %}
 {% if user.is_authenticated %}
     {% if user.is_merchant %}
-        <h4>Is Merchant</h4>
-        {% for category in category_list %}
-            <button class="btn badge btn-primary">{{ category }}</button>
-        {% endfor %}
+        <h4>Business Information Signup</h4>
+        <br>
+        <form method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <br>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
     {% else %}
         <h4>Not Merchant</h4>
     {% endif %}
 {% else %}
     <h4>You Need To Login</h4>
 {% endif %}
+<script>
+    function get_data(objButton){
+        alert(objButton.value);
+    }
+</script>
 {% endblock %}

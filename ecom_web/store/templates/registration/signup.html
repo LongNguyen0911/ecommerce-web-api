@@ -2,9 +2,18 @@
 {% load static %}
 {% block content %}
   <h2>Sign up</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Sign Up</button>
-  </form>
+  <br>
+  <div>
+      <form method="post" onsubmit="status()">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button type="submit" class="btn btn-primary">Signup</button>
+          <a class="btn btn-danger" href="/" role="button">Cancel</a>
+      </form>
+  </div>
+  <script>
+    function status(){
+      alert("Account Created!")
+    }
+  </script>
 {% endblock %}
